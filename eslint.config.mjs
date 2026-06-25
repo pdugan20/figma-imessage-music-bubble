@@ -8,10 +8,20 @@ export default tseslint.config(
   { ignores: ['dist', 'coverage', 'node_modules'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked.map((config) => ({
+    ...config,
+    files: config.files ?? ['src/**/*.ts', 'src/**/*.tsx'],
+  })),
   {
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        project: 'tsconfig.eslint.json',
+      },
+      globals: { ...globals.browser },
+    },
     plugins: { '@figma/figma-plugins': figma },
     rules: { ...figma.configs.recommended.rules },
-    languageOptions: { globals: { ...globals.browser } },
   },
   {
     files: ['*.mjs'],
