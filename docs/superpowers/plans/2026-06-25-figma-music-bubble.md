@@ -53,6 +53,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.3",
     "@figma/eslint-plugin-figma-plugins": "^1.0.0",
     "@figma/plugin-typings": "^1.114.0",
     "@vitest/coverage-v8": "^3.0.0",
