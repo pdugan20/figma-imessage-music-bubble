@@ -94,10 +94,14 @@ function scheduleSearch(): void {
   clearBtn.style.display = searchInput.value.length > 0 ? 'block' : 'none'
   const query = searchInput.value.trim()
   if (!query) {
+    clearTimeout(debounceTimer)
     void renderDefault()
     return
   }
-  if (query.length < 2) return
+  if (query.length < 2) {
+    clearTimeout(debounceTimer)
+    return
+  }
   clearTimeout(debounceTimer)
   debounceTimer = setTimeout(() => void doSearch(), 350)
 }
