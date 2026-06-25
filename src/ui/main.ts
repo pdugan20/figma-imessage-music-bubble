@@ -67,7 +67,7 @@ async function renderDefault(): Promise<void> {
 async function doSearch(): Promise<void> {
   const query = searchInput.value.trim()
   if (!query) return
-  resultsArea.innerHTML = '<div class="loading">Searching&hellip;</div>'
+  resultsArea.innerHTML = '<div class="spinner-wrap"><div class="spinner"></div></div>'
   try {
     const tracks = await searchTracks(query)
     if (!tracks.length) {

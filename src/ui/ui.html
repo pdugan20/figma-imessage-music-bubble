@@ -138,10 +138,10 @@
       }
       .color-dot {
         position: absolute;
-        bottom: -3px;
-        right: -3px;
-        width: 10px;
-        height: 10px;
+        bottom: -2px;
+        right: -2px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
         border: 1.5px solid var(--figma-color-bg, #fff);
       }
@@ -171,6 +171,41 @@
         color: var(--figma-color-text-secondary, #888);
         text-align: center;
       }
+
+      .spinner-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid var(--figma-color-border, #e5e5e5);
+        border-top-color: var(--figma-color-text-secondary, #999);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      fig-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 40px;
+        padding: 0 var(--spacer-3, 12px);
+        border-top: 1px solid var(--figma-color-border, #e5e5e5);
+      }
+      #status-label {
+        color: var(--figma-color-text-secondary, #777);
+        font-size: 11px;
+        line-height: 1;
+      }
     </style>
   </head>
   <body>
@@ -182,7 +217,7 @@
         </div>
       </div>
       <div id="results-area">
-        <div class="loading">Loading&hellip;</div>
+        <div class="spinner-wrap"><div class="spinner"></div></div>
       </div>
       <fig-footer>
         <label id="status-label">Select a Music Bubble layer</label>
