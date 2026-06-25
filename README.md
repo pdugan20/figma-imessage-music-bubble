@@ -1,4 +1,4 @@
-# iMessage Music Bubble
+# iMessage Music Bubble for Figma
 
 [![CI](https://github.com/pdugan20/figma-imessage-music-bubble/actions/workflows/ci.yml/badge.svg)](https://github.com/pdugan20/figma-imessage-music-bubble/actions/workflows/ci.yml)
 [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/developers/plugins)
