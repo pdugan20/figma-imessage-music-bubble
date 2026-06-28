@@ -7,14 +7,9 @@
 
 A Figma plugin that fills a selected Music Bubble component with real track data from
 the iTunes API. Search any song, then one click sets the title, artist, album artwork,
-and a dominant-color theme drawn from the cover art.
-
-## Features
-
-- iTunes search with album artwork and a dominant-color swatch per result
-- One-click fill of a selected Music Bubble: title, artist, album art, and a color theme from the cover
-- Contrast-aware light/dark text and Apple Music logo
-- Recently used and featured tracks, with debounced search
+and a dominant-color theme drawn from the cover art. Search results show album artwork
+with a dominant-color swatch, text and the Apple Music logo adapt for light/dark
+contrast, and recently used and featured tracks are a click away with debounced search.
 
 ## Prerequisites
 
@@ -49,14 +44,6 @@ npm run style:write   # Prettier formatting
 
 Git hooks (pre-commit lint-staged, commit-msg commitlint) are installed automatically
 on `npm install` via `simple-git-hooks`.
-
-## Tech Stack
-
-- **Build**: esbuild (plugin bundle plus UI inlined into a single `dist/ui.html`)
-- **Language**: TypeScript, vanilla DOM UI (no framework)
-- **Data**: iTunes Search API
-- **Testing**: Vitest (jsdom)
-- **Quality**: ESLint 9, Prettier, markdownlint, Conventional Commits, release-please
 
 ## Related
 
