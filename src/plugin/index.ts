@@ -19,18 +19,28 @@ function postSelection() {
 postSelection()
 figma.on('selectionchange', postSelection)
 
+// Serialize populate requests: resolving/inserting is async, so a rapid double
+// click with nothing selected could otherwise create two stacked bubbles.
+let populating = false
+
 figma.ui.onmessage = async (msg: PopulateMessage) => {
   if (msg.type !== 'populate') return
-  const resolved = await bubbleSource.resolve()
-  if (!resolved.ok) {
-    figma.notify(resolved.message)
-    return
+  if (populating) return
+  populating = true
+  try {
+    const resolved = await bubbleSource.resolve()
+    if (!resolved.ok) {
+      figma.notify(resolved.message)
+      return
+    }
+    const filled = await fillBubble(resolved.instance, msg)
+    if (!filled) {
+      figma.notify('Could not find the expected layers in this Music Bubble')
+      return
+    }
+    if (resolved.created) figma.currentPage.selection = [resolved.instance]
+    figma.notify(`Added ${msg.trackName} by ${msg.artistName}`)
+  } finally {
+    populating = false
   }
-  const filled = await fillBubble(resolved.instance, msg)
-  if (!filled) {
-    figma.notify('Could not find the expected layers in this Music Bubble')
-    return
-  }
-  if (resolved.created) figma.currentPage.selection = [resolved.instance]
-  figma.notify(`Added ${msg.trackName} by ${msg.artistName}`)
 }
